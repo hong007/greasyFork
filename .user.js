@@ -27,7 +27,7 @@
 // @exclude       http://diveintogreasemonkey.org/*
 // @exclude       http://www.diveintogreasemonkey.org/*
 // @run-at      document-end
-// @version    0.1.201807021735
+// @version    0.1.201807021811
 // ==/UserScript==
 (function () {
   'use strict';
