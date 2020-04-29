@@ -27,12 +27,20 @@
 // @exclude       http://diveintogreasemonkey.org/*
 // @exclude       http://www.diveintogreasemonkey.org/*
 // @run-at      document-end
-// @version    0.1.201807021811
+// @version    0.1.20200331000002
 // ==/UserScript==
 (function () {
   'use strict';
   var regSound = 'www.soundsnap.com';
+  function watchInterval() {
+     setInterval(init, 3000);
+  }
   if (location.host === regSound) {
+    watchInterval();
+    init();
+  }
+  
+  function init() {
     createDownloadAllElement();
     var items = document.getElementsByClassName("wave");
     var parentsItems = document.getElementsByClassName("ojoo-teaser");
@@ -53,7 +61,7 @@
   function getChildrenByName(curEle, tagName) {
     var nodeList = curEle.childNodes;
     var ary = [],
-      resultChild = [];
+    resultChild = [];
     if (/MSIE(6|7|8)/.test(navigator.userAgent)) {
       for (var i = 0; i < nodeList.length; i++) {
         var curNode = nodeList[i];
@@ -85,7 +93,7 @@
     ele.text = "下载";
     ele.style.position = 'absolute';
     ele.style.bottom = '44px';
-    ele.style.left = '0px';
+    ele.style.left = '-30px';
     return ele;
   }
 
@@ -105,7 +113,7 @@
     button.style.color = "white";
     button.style.position = 'absolute';
     button.style.bottom = '0px';
-    button.style.left = '0px';
+    button.style.left = '-30px';
     button.innerText = '下载全部';
     var container = document.getElementsByClassName('search-results');
     if (container && container.length > 0) {
